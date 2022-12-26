@@ -1,0 +1,24 @@
+{
+  "name": "Coder Reminder",
+  "description": "Reminds you that yak fur is yacky",
+  "manifest_version": 3,
+  "version": "0.1",
+  "icons": {
+    "64": "icon64.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["app.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": "icon128.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage"]
+}
