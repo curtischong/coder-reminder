@@ -15,7 +15,7 @@ export const App: React.FC = () => {
     const historyKey = "visitHistory";
     const durationInHistorySecs = 60 * 60; // 60 seconds * 60 minutes = 1 hour
     // durationInHistorySecs = 30;
-    const maxSearchCount = 2; // the maximum number of times we see this website before we get an alert
+    const maxSearchCount = 3; // the maximum number of times we see this website before we get an alert
 
     useEffect(() => {
         const url = location.href;
