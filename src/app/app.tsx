@@ -1,8 +1,9 @@
 import * as React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { StorageManager } from "../storage/StorageManager";
 import "./app.css";
 import "../index.css"; // needed for tailwind
+import ToasterPopup, { NotifyMsg } from "../components/ToastPopup/ToasterPopup";
 
 interface Search {
     url: string;
@@ -11,13 +12,17 @@ interface Search {
 
 export const App: React.FC = () => {
     const storageManager = useRef(new StorageManager());
-    const [showAlert, setShowAlert] = useState(false);
+    const [notifyMsg, setNotifyMsg] = React.useState<NotifyMsg | null>(null);
+
     const historyKey = "visitHistory";
     const durationInHistorySecs = 60 * 60; // 60 seconds * 60 minutes = 1 hour
     // durationInHistorySecs = 30;
-    const maxSearchCount = 3; // the maximum number of times we see this website before we get an alert
+    // 3 is a good maxSearchCount
+    //const maxSearchCount = 3; // the maximum number of times we see this website before we get an alert
+    const maxSearchCount = 1; // the maximum number of times we see this website before we get an alert
 
     useEffect(() => {
+        setNotifyMsg({ msg: "hi", nonce: "asd" });
         const url = location.href;
         if (!url.startsWith("https://www.google.com/")) {
             // we are only interested in queries the user makes on google
@@ -26,7 +31,7 @@ export const App: React.FC = () => {
             // will most likely be searching through internal company code, which is not really "blindly googling"
             // however, perhaps it should as they are searching for the same things without success
             // although, it will depend on the number of results and which results they are clicking on
-            return;
+            // return;
         }
         storageManager.current.fetchItem(historyKey).then((serialized: Search[]) => {
             const history = !serialized
@@ -40,13 +45,13 @@ export const App: React.FC = () => {
 
             updateHistory(history, url);
             if (searchExceedsLimit(history, url)) {
-                alert(`You have been searching the same terms frequently. Take a break and ask yourself:
-                1) Why is this issue occurring?
-                2) Can we use a workaround instead?
-                `);
-                console.log("triggered");
-                setShowAlert(true);
-                console.log(history);
+                // setNotifyMsg({
+                //     msg: `You have been searching the same terms frequently. Take a break and ask yourself:
+                // 1) Why is this issue occurring?
+                // 2) Can we use a workaround instead?
+                // `,
+                //     nonce: new Date().toString(),
+                // });
             }
         });
     }, []);
@@ -93,21 +98,7 @@ export const App: React.FC = () => {
 
     return (
         <div id="example-app">
-            {/*<div className="fixed top-200 right-100">*/}
-            {/*    <Transition*/}
-            {/*        show={showAlert}*/}
-            {/*        enter="transition ease duration-2000 transform"*/}
-            {/*        enterFrom="opacity-0 -translate-y-full"*/}
-            {/*        enterTo="opacity-100 translate-y-0"*/}
-            {/*        leave="transition ease duration-1000 transform"*/}
-            {/*        leaveFrom="opacity-1000 translate-y-0"*/}
-            {/*        leaveTo="opacity-0 -translate-y-full"*/}
-            {/*    >*/}
-            {/*        <div className="border-3 border-black">*/}
-            {/*            <p className="text-red-300">example-app</p>*/}
-            {/*        </div>*/}
-            {/*    </Transition>*/}
-            {/*</div>*/}
+            <ToasterPopup notifyMsg={notifyMsg} />
         </div>
     );
 };
