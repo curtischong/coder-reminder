@@ -17,13 +17,13 @@
 
 #toaster.show {
     visibility: visible;
-    -webkit-animation: fadein 0.5s;
-    animation: fadein 0.5s;
+    -webkit-animation: toaster-appear 2s;
+    animation: toaster-appear 2s;
 }
 
-@-webkit-keyframes fadein {
+@-webkit-keyframes toaster-appear {
     from {
-        top: 0;
+        top: -100px;
         opacity: 0;
     }
     to {
@@ -32,9 +32,9 @@
     }
 }
 
-@keyframes fadein {
+@keyframes toaster-appear {
     from {
-        top: 0;
+        top: -100px;
         opacity: 0;
     }
     to {
