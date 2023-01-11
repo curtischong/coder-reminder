@@ -3,7 +3,7 @@
 export class StorageManager {
     async fetchItem(key: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            chrome.storage.sync.get(key, (items: { [key: string]: any }): void => {
+            chrome.storage.local.get(key, (items: { [key: string]: any }): void => {
                 resolve(items[key]);
             });
         });
@@ -11,18 +11,18 @@ export class StorageManager {
 
     async insertItem(key: string, items: any): Promise<void> {
         return new Promise((resolve, reject) => {
-            chrome.storage.sync.set({ [key]: items }, resolve);
+            chrome.storage.local.set({ [key]: items }, resolve);
         });
     }
 
     async clearStorage(): Promise<void> {
         return new Promise((resolve, reject) => {
-            chrome.storage.sync.clear(resolve);
+            chrome.storage.local.clear(resolve);
         });
     }
 
     printStorage(): void {
-        chrome.storage.sync.get((items) => {
+        chrome.storage.local.get((items) => {
             console.log(items);
         });
     }
