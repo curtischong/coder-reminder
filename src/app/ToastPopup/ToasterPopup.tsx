@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
-import "./ToastPopup.css";
+import "./ToasterPopup.css";
+import CloseBtn from "../../components/CloseBtn/CloseBtn";
 
 export interface NotifyMsg {
     msg: string;
@@ -17,18 +18,21 @@ export default function ToasterPopup({ notifyMsg }: ToasterPopupProps) {
         if (!notifyMsg || notifyMsg.msg === "") return;
         const msg = notifyMsg.msg;
         // Get the snackbar DIV
-        const x = document.getElementById("toaster");
-        if (!x) {
-            console.error(`Smart Paste cannot create toast element. msg=`, msg);
-            return;
-        }
-
+        const x = document.getElementById("toaster")!;
         x.className = "show";
     }, [notifyMsg]);
 
     return (
         <>
-            <div id="toaster">{notifyMsg && notifyMsg.msg}</div>
+            <div id="toaster">
+                <CloseBtn
+                    onClick={() => {
+                        const x = document.getElementById("toaster")!;
+                        x.className = x.className.replace("show", "");
+                    }}
+                />
+                {notifyMsg && notifyMsg.msg}
+            </div>
         </>
     );
 }

@@ -1,0 +1,45 @@
+.close-con {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 8px;
+    top: 8px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.close-con:hover {
+    cursor: pointer;
+}
+
+.close-con:hover > .close {
+    opacity: 1;
+}
+
+.close {
+    opacity: 0.3;
+}
+
+/*not sure how to do this properly*/
+/*.close:before:active, .close:after:active {*/
+/*    background-color: #1fa2ff;*/
+/*}*/
+
+.close:before, .close:after {
+    position: absolute;
+    left: 9px;
+    top: 3px;
+    content: ' ';
+    height: 15px;
+    width: 2px;
+    background-color: #333;
+    border-radius: 3px;
+}
+
+.close:before {
+    transform: rotate(45deg);
+}
+
+.close:after {
+    transform: rotate(-45deg);
+}
