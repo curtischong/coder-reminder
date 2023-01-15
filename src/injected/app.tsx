@@ -1,8 +1,7 @@
 import * as React from "react";
 import { useEffect, useRef } from "react";
-import { StorageManager } from "../storage/StorageManager";
+import { StorageManager } from "@storage/StorageManager";
 import "./app.css";
-import "../index.css"; // needed for tailwind
 import ToasterPopup, { NotifyMsg } from "./ToastPopup/ToasterPopup";
 import * as ReactDOM from "react-dom";
 

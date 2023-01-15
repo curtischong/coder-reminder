@@ -7,12 +7,12 @@ const config = {
     entry: {
         onboarding: path.join(__dirname, "src/onboarding/onboarding.tsx"),
         popup: path.join(__dirname, "src/popup/view.tsx"),
-        app: path.join(__dirname, "src/app/main.ts"),
-        background: path.join(__dirname, "src/background.ts"),
+        app: path.join(__dirname, "src/injected/main.ts"),
+        background: path.join(__dirname, "src/background/background.ts"),
     },
     output: {
         path: path.join(__dirname, "dist"),
-        // I think it's [name].js since we compile multiple entry points using this config (popup AND app)
+        // I think it's [name].js since we compile multiple entry points using this config (popup AND injected)
         filename: "[name].js",
         sourceMapFilename: "[name].js.map",
     },
@@ -74,6 +74,18 @@ const config = {
         extensions: [".js", ".jsx", ".tsx", ".ts"],
         alias: {
             "react-dom": "@hot-loader/react-dom",
+            // pages
+            "@injected": path.resolve(__dirname, "src/injected"),
+            "@onboarding": path.resolve(__dirname, "src/onboarding"),
+            "@popup": path.resolve(__dirname, "src/popup"),
+
+            // under pkg
+            "@storage": path.resolve(__dirname, "src/pkg/storage"),
+            "@utils": path.resolve(__dirname, "src/pkg/utils"),
+
+            // other
+            "@components": path.resolve(__dirname, "src/components"),
+            "@background": path.resolve(__dirname, "src/background"),
         },
     },
     devServer: {

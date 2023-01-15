@@ -1,7 +1,7 @@
 // This is the view you see when you click on the Chrome extension icon
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import "../index.css"; // needed for tailwind
+import "../tailwind.css"; // needed for tailwind
 
 class Popup extends React.Component {
     render() {
