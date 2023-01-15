@@ -1,18 +1,47 @@
 {
-    "compilerOptions": {
-        "outDir": "./dist/",
-        "sourceMap": true,
-        "strict": true,
-        "noImplicitReturns": true,
-        "noImplicitAny": true,
-        "module": "es6",
-        "moduleResolution": "node",
-        "target": "es5",
-        "allowJs": true,
-        "jsx": "react"
-    },
-    "include": [
-        "./src/**/*",
-        "src/custom.d.ts"
-    ]
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "moduleResolution": "node",
+    "target": "es5",
+    "allowJs": true,
+    "jsx": "react",
+    "baseUrl": "./src/",
+    "paths": {
+      // NOTE: you also have to change the path aliases in webpack.config.js
+
+      // pages
+      "@injected/*": [
+        "injected/*"
+      ],
+      "@onboarding/*": [
+        "onboarding/*"
+      ],
+      "@popup/*": [
+        "popup/*"
+      ],
+      // under pkg
+      "@storage/*": [
+        "pkg/storage/*"
+      ],
+      "@utils/*": [
+        "pkg/utils/*"
+      ],
+      // other
+      "@components/*": [
+        "components/*"
+      ],
+      "@background/*": [
+        "background/*"
+      ]
+    }
+  },
+  "include": [
+    "./src/**/*",
+    "src/custom.d.ts"
+  ]
 }

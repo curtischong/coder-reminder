@@ -1,7 +1,7 @@
 // This file is used to mount the injected onto the webpage
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import "../tailwind.css";
+import "~tailwind.css";
 import { App } from "./app";
 
 const body = document.getElementsByTagName("body");

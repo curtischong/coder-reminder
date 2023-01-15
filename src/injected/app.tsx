@@ -73,7 +73,9 @@ export const App: React.FC = () => {
         });
         storageManager.current
             .insertItem(historyKey, serialized)
-            .catch((err) => console.error(`Cannot record current url into history err =${err}`));
+            .catch((err: any) =>
+                console.error(`Cannot record current url into history err =${err}`)
+            );
     };
 
     const discardOldSearches = (history: Search[], now: Date): void => {

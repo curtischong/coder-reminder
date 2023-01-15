@@ -74,6 +74,7 @@ const config = {
         extensions: [".js", ".jsx", ".tsx", ".ts"],
         alias: {
             "react-dom": "@hot-loader/react-dom",
+            // NOTE: you also have to change the path aliases in tsconfig.json
             // pages
             "@injected": path.resolve(__dirname, "src/injected"),
             "@onboarding": path.resolve(__dirname, "src/onboarding"),
@@ -87,6 +88,7 @@ const config = {
             "@components": path.resolve(__dirname, "src/components"),
             "@background": path.resolve(__dirname, "src/background"),
         },
+        modules: [path.resolve(__dirname, "./")],
     },
     devServer: {
         contentBase: "./dist",
