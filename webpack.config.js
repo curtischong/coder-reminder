@@ -73,7 +73,6 @@ const config = {
     resolve: {
         extensions: [".js", ".jsx", ".tsx", ".ts"],
         alias: {
-            "react-dom": "@hot-loader/react-dom",
             // NOTE: you also have to change the path aliases in tsconfig.json
             // pages
             "@injected": path.resolve(__dirname, "src/injected"),
@@ -88,7 +87,9 @@ const config = {
             "@components": path.resolve(__dirname, "src/components"),
             "@background": path.resolve(__dirname, "src/background"),
         },
-        modules: [path.resolve(__dirname, "./")],
+        modules: [path.resolve(__dirname, "./"),
+            path.resolve(__dirname, "node_modules"),
+        ],
     },
     devServer: {
         contentBase: "./dist",
@@ -98,9 +99,9 @@ const config = {
             patterns: [{ from: "public", to: "." }],
         }),
         // for blueprintjs: https://github.com/palantir/blueprint/issues/3739
-        new webpack.DefinePlugin({
-            "process.env": "{}",
-        }),
+        // new webpack.DefinePlugin({
+        //     "process.env": "{}",
+        // }),
     ],
 };
 

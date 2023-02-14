@@ -17,8 +17,7 @@ export const App: React.FC = () => {
     const durationInHistorySecs = 60 * 60; // 60 seconds * 60 minutes = 1 hour
     // durationInHistorySecs = 30;
     // 3 is a good MAX_SEARCH_CNT
-    //const MAX_SEARCH_CNT = 3; // the maximum number of times we see this website before we get an alert
-    const MAX_SEARCH_CNT = 1; // the maximum number of times we see this website before we get an alert
+    const MAX_SEARCH_CNT = 3; // the maximum number of times we see this website before we get an alert
 
     useEffect(() => {
         // setNotifyMsg({ nonce: "asd" });

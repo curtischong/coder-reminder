@@ -1,7 +1,6 @@
 // This is the view you see when you click on the Chrome extension icon
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import "../tailwind.css"; // needed for tailwind
 
 class Onboarding extends React.Component {
     constructor(props: any) {

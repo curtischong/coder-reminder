@@ -3,17 +3,19 @@ by [Sivert Schou Olsen](https://github.com/sivertschou)
 
 ## Installation
 
-Navigate to the project directory and install the dependencies.
-
 ```
 $ yarn install
 ```
 
-To build the extension, and rebuild it when the files are changed, run
-
 ```
 $ yarn start
 ```
+
+To load the extension into chrome
+1) go to chrome://extensions/
+2) Click developer mode (top right corner)
+3) click load unpacked
+4) select the `dist` directory that was generated after yarn start
 
 ## Development
 
