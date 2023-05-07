@@ -21,4 +21,4 @@ To load the extension into chrome
 
 - If you update the manifest.json you have to manually turn off/on the extension in the extensions
   page ([Extensions Reloader](https://chrome.google.com/webstore/detail/extensions-reloader/fimgfedafeadlieiabdeeaodndnlbhid?hl=en)
-  won't work).# chrome-extension-template
+  won't work).
